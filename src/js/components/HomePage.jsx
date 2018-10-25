@@ -47,7 +47,7 @@ class HomePage extends Component {
           <div className="welcome-details">
             <h2 className="heading">Welcome Here</h2>
             <p>Sign in to view our employees list before checking in</p>
-            <button className="button-pink">Sign in with google</button>
+            <button className="button-pink" onClick={this.login}>Sign in with google</button>
           </div>
         </div>  
       </div>
