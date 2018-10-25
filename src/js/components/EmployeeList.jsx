@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import DisplayEmail from './DisplayEmail';
 import firebase from 'firebase';
 import firebaseApp from '../../../config/firebase.js';
 
@@ -26,9 +25,9 @@ class EmployeeList extends Component {
     });
   }
 
-  // setEmployeeName () {
-  //   localStorage.setItem('employee', this.state.employees)
-  // }
+  setEmployeeName = (employeeName) => {
+    localStorage.setItem('employee', employeeName)
+  }
 
   render () {
     const {
@@ -50,7 +49,11 @@ class EmployeeList extends Component {
                 <p className="description">{employee.role}</p>
               </div>
               <div className="col-12 col-md-6 detail">
-                <Link to="/email-success" className="button-pink">Send an email</Link>
+                <Link 
+                  to="/email-success" className="button-pink" 
+                  onClick={() => {this.setEmployeeName(employee.name)}}>
+                  Send an email
+                </Link>
               </div>
             </div>
           </div>

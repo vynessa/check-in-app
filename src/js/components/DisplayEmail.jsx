@@ -10,15 +10,16 @@ import {
 class DisplayEmail extends Component {
   render () {
     const user = JSON.parse(localStorage.getItem('user'));
-
+    const employeeName = localStorage.getItem('employee');;
+    
     return (
       <div>
         <div className="container display-email-success">
           <div className="display-email-details">
             <h5 >Hi {user.displayName}</h5>
-            <p>An email has been sent to {user.displayName}</p>
+            <p>An email has been sent to {employeeName}</p>
             <p>Make yourself comfortable in our lounge</p>
-            <p>{user.displayName} will be with you in a bit.</p>
+            <p>{employeeName} will be with you in a bit.</p>
           </div>
         </div>  
       </div>

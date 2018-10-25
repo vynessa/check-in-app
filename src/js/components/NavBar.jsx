@@ -36,7 +36,7 @@ class NavBar extends React.Component {
 
   logout = () => {
     firebaseApp.auth().signOut().then(() => {
-      localStorage.removeItem('user');
+      localStorage.clear();
       this.setState({
         user: null,
         isAuthenticated: false
