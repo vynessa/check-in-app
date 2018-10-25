@@ -7,8 +7,8 @@ import '../../public/scss/main.scss';
 const app = document.getElementById('app');
 
 ReactDOM.render(
-  <BrowserRouter>
-    <AppRoutes />
-  </BrowserRouter>,
-  app
+<BrowserRouter>
+  <AppRoutes />
+</BrowserRouter>,
+app
 );

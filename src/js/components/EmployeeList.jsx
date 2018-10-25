@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+// import DisplayEmail from './DisplayEmail';
+import firebase from 'firebase';
 import firebaseApp from '../../../config/firebase.js';
 
 class EmployeeList extends Component {
@@ -7,21 +10,25 @@ class EmployeeList extends Component {
   }
 
   componentWillMount() {
-    let employeeRef = firebaseApp.database().ref('employees')
-    employeeRef.orderByKey().once('value').then((employees) => {
+    const employeeRef = firebaseApp.database().ref('employees')
+    employeeRef.orderByKey().once('value').then((employee) => {
       let employeeObjs = [];
-      let _employee = employees.val();
+      let _employee = employee.val();
       
-      for (let x in _employee) {
-        _employee[x].key = x
-        employeeObjs.push(_employee[x]);
+      for (let index in _employee) {
+        _employee[index].key = index
+        employeeObjs.push(_employee[index]);
       }
-      
+
       this.setState({
         employees: employeeObjs
-      })
+      });
     });
   }
+
+  // setEmployeeName () {
+  //   localStorage.setItem('employee', this.state.employees)
+  // }
 
   render () {
     const {
@@ -30,27 +37,35 @@ class EmployeeList extends Component {
 
     const renderEmployees = employees.map((employee, index) => {
       return (
-        <section className="container" key={`employee-${index+1}`}>
-          <ul className="employee-list">
-            <li className="employee-card shadow">
-              <a className="card-body" >
-                <div className="row">
-                  <div className="col-12 col-md-6 detail">
-                    <h6 className="title fat-text">{employee.name}</h6>
-                    <p className="description">{employee.email}</p>
-                    <p className="description">{employee.role}</p>
-                  </div>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </section>
+        <li className="employee-card shadow" key={`employee-${index+1}`}>
+          <div className="card-body" >
+            <div className="row">
+              <div className="col-12 col-md-6 detail">
+                <h6 className="title fat-text">{employee.name}</h6>
+              </div>
+              <div className="col-12 col-md-6 detail">
+                <p className="description">{employee.email}</p>
+              </div>
+              <div className="col-12 col-md-6 detail">
+                <p className="description">{employee.role}</p>
+              </div>
+              <div className="col-12 col-md-6 detail">
+                <Link to="/email-success" className="button-pink">Send an email</Link>
+              </div>
+            </div>
+          </div>
+        </li>
       )
     });
 
-    return [
-      renderEmployees
-    ]
+    return (
+      <section className="container employee-container">
+        <h2 className="employee-header">View all employees</h2>
+        <ul className="employee-list">
+          {renderEmployees}
+        </ul>
+      </section>
+    );    
   }
 }
 
