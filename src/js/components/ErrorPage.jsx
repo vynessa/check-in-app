@@ -1,15 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-/**
- * @class ErrorPage
- * @extends {Component}
- */
 const ErrorPage = () => {
-  /**
-   * @returns {JSX.Element} ErrorPage
-   * @memberof ErrorPage
-   */
   return (
     <div>
       <div className="container display-error-page">
