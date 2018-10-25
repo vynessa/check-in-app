@@ -22,13 +22,9 @@ html {
   margin: 0;
 }
 
-.signup-form,
-.login-form,
-.edit-user-form {
-  p {
-    color: white;
-    font-size: 13px;
-  }
+.button-pink,
+a.button-pink {
+  @include buttons($palette-pink, $white);
 }
 
 .employee-list {
@@ -64,31 +60,31 @@ html {
     font-size: 12px;
   }
 
-  .welcome-details {
-    margin-top: 100px;
+}
 
-    p {
-      color: $white;
-      font-size: 16px;
-      margin: 20px 0 50px;
-    }
-  
-    h2 {
-      color: $white;
-      font-size: 36px;
-      font-weight: 100;
-      letter-spacing: -2px;
-  
-      @include respond-to(medium-screens) {
-        font-size: 80px;
-        letter-spacing: -5px;
-      }
-  
-      @include respond-to(tablets) {
-        font-size: 60px;
-        letter-spacing: -3px;
-      }
-    }
+.welcome-details {
+  margin-top: 100px;
+
+  p {
+    color: $black;
+    font-size: 16px;
+    margin: 20px 0 50px;
   }
 
+  h2 {
+    color: $black;
+    font-size: 36px;
+    font-weight: 100;
+    letter-spacing: -2px;
+
+    @include respond-to(medium-screens) {
+      font-size: 80px;
+      letter-spacing: -5px;
+    }
+
+    @include respond-to(tablets) {
+      font-size: 60px;
+      letter-spacing: -3px;
+    }
+  }
 }

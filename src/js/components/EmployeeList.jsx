@@ -16,7 +16,7 @@ class EmployeeList extends Component {
         _employee[x].key = x
         employeeObjs.push(_employee[x]);
       }
-
+      
       this.setState({
         employees: employeeObjs
       })

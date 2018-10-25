@@ -31,7 +31,6 @@ class NavBar extends React.Component {
             </Col>
           </Row>
         </Container>
-
       </Navbar>
     </header>
     );

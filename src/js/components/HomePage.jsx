@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { GoogleButton } from 'react-materialize';
 import firebaseApp from '../../../config/firebase.js';
 
 const provider = new firebase.auth.GoogleAuthProvider();
@@ -41,14 +40,13 @@ class HomePage extends Component {
     });
   }
   
-
   render() {
     return (
       <div>
         <div className="container welcome-text">
           <div className="welcome-details">
             <h2 className="heading">Welcome Here</h2>
-            <p>View our employees list</p>
+            <p>Sign in to view our employees list before checking in</p>
             <button className="button-pink">Sign in with google</button>
           </div>
         </div>  
