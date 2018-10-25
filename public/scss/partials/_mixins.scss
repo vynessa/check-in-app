@@ -1,0 +1,60 @@
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (min-width: $break-point-smobile) and (max-width: $break-point-mobile) { @content; }
+  } @else if $media == tablets {
+    @media only screen and (min-width: $break-point-mobile + 1) and (max-width: $break-point-large-tablet) { @content; }
+  } @else if $media == tablet-and-mobile {
+    @media only screen and (max-width: $break-point-large-tablet) { @content; }
+  } @else if $media == medium-screens {
+    @media only screen and (min-width: $break-point-desktop + 1) and (max-width: $break-point-large) { @content; }
+  } @else if $media == wide-screens {
+    @media only screen and (min-width: $break-point-large) { @content; }
+  }
+}
+
+@mixin buttons($bg-color, $text-color, $padding: 15px 30px, $font-size: 11px, $border: none) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding: $padding;
+  font-size: $font-size;
+  font-weight: 500;
+  letter-spacing: 3px;
+  border: $border;
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+}
+
+@mixin nav-links($text-color: $white, $letter-spacing: 3px, $text-transform: uppercase) {
+  color: $text-color;
+  letter-spacing: $letter-spacing;
+  font-weight: 500;
+  text-transform: $text-transform;
+  text-decoration: none;
+}
+
+@mixin logo($text-color: $white, $font-family: $font-family-logo, $font-size: 40px, $margin: 0) {
+  color: $text-color;
+  font-family: $font-family;
+  text-decoration: none;
+  font-size: $font-size;
+  margin: $margin;
+
+  @include respond-to(handhelds) {
+    font-size: 30px;
+  }
+}
+
+@mixin user-auth-text() {
+  color: $palette-pink;
+  text-transform: uppercase;
+}
+
+@mixin form-label($text-color: $white, $font-weight: 100, $text-transform: uppercase, $letter-spacing: 4px) {
+  color: $text-color;
+  font-size: 10px;
+  font-weight: $font-weight;
+  text-transform: $text-transform;
+  letter-spacing: $letter-spacing;
+}
