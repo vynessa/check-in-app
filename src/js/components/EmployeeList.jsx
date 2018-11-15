@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import firebaseApp from '../../../config/firebase.js';
+import Preloader from './Preloader';
 
 class EmployeeList extends Component {
   state = {
@@ -10,17 +11,9 @@ class EmployeeList extends Component {
 
   componentWillMount() {
     const employeeRef = firebaseApp.database().ref('employees')
-    employeeRef.orderByKey().once('value').then((employee) => {
-      let employeeObjs = [];
-      let _employee = employee.val();
-      
-      for (let index in _employee) {
-        _employee[index].key = index
-        employeeObjs.push(_employee[index]);
-      }
-
+    employeeRef.orderByKey().once('value').then((employees) => {
       this.setState({
-        employees: employeeObjs
+        employees: employees.val()
       });
     });
   }
@@ -65,7 +58,13 @@ class EmployeeList extends Component {
       <section className="container employee-container">
         <h2 className="employee-header">View all employees</h2>
         <ul className="employee-list">
-          {renderEmployees}
+          {
+            renderEmployees.length === 0 
+            ?
+            <Preloader />
+            :
+            renderEmployees
+          }
         </ul>
       </section>
     );    

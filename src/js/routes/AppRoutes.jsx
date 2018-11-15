@@ -6,10 +6,9 @@ import EmployeeList from '../components/EmployeeList';
 import DisplayEmail from '../components/DisplayEmail';
 import ErrorPage from '../components/ErrorPage';
 
-const isAuthenticated = () => {
-  const user = localStorage.getItem('user');
-  return user ? true : false; 
-};
+const isAuthenticated = () => (
+  localStorage.user ? true : false
+);
 
 const PrivateRoute = ({component: Component, ...rest}) => (
   <Route {...rest} render={(props) => (
@@ -19,14 +18,15 @@ const PrivateRoute = ({component: Component, ...rest}) => (
 
 const TriggerRedirect = () => (
   localStorage.user ? <Redirect to="/employees"/> : <HomePage />
-)
+);
 
-const AppRoutes = ({auth}) => (
+const AppRoutes = () => (
   <Router>
     <Route path="/" component={Layout}/>
     <Route exact path="/" component={TriggerRedirect}/>
     <PrivateRoute path="/employees" component={EmployeeList}/>
     <PrivateRoute path="/email-success" component={DisplayEmail}/>
+    {/* <Route component={ErrorPage}/> */}
   </Router>
 );
 

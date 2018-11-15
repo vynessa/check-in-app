@@ -15,7 +15,7 @@ const config = {
     publicPath: '/',
     contentBase: './src',
     compress: true,
-    port: 8000,
+    port: 9000,
     historyApiFallback: true
   },
   watch: true,
